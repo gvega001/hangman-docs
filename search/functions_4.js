@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['initializehighscore_0',['initializeHighScore',['../file__functions_8c.html#a01f273cdf761b4fd3983eb64d18cfdf3',1,'initializeHighScore(const HangmanContext *ctx, int *highScore):&#160;file_functions.c'],['../hangman_8h.html#a01f273cdf761b4fd3983eb64d18cfdf3',1,'initializeHighScore(const HangmanContext *ctx, int *highScore):&#160;file_functions.c']]],
+  ['initializeword_1',['initializeWord',['../game__functions_8c.html#a0b9274287255c89ebf714f82864d97d8',1,'initializeWord(char *word, const char *phrase, int length):&#160;game_functions.c'],['../hangman_8h.html#a0b9274287255c89ebf714f82864d97d8',1,'initializeWord(char *word, const char *phrase, int length):&#160;game_functions.c']]],
+  ['isalreadyguessed_2',['isAlreadyGuessed',['../game__functions_8c.html#a6d50ae4700be0c3296ff4c02c0985450',1,'isAlreadyGuessed(char guess, const HangmanContext *ctx):&#160;game_functions.c'],['../hangman_8h.html#a6d50ae4700be0c3296ff4c02c0985450',1,'isAlreadyGuessed(char guess, const HangmanContext *ctx):&#160;game_functions.c']]],
+  ['isvalidguess_3',['isValidGuess',['../game__functions_8c.html#a5ad6d77c00d7ffb64a1b1a731dfe367d',1,'isValidGuess(char guess, const HangmanContext *ctx):&#160;game_functions.c'],['../hangman_8h.html#a5ad6d77c00d7ffb64a1b1a731dfe367d',1,'isValidGuess(char guess, const HangmanContext *ctx):&#160;game_functions.c']]],
+  ['iswordguessed_4',['isWordGuessed',['../game__functions_8c.html#acc08f15e08111eaf04c7c557a682ec02',1,'isWordGuessed(const char *word, int length):&#160;game_functions.c'],['../hangman_8h.html#acc08f15e08111eaf04c7c557a682ec02',1,'isWordGuessed(const char *word, int length):&#160;game_functions.c']]]
+];
