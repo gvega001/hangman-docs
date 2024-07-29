@@ -2391,7 +2391,6 @@ body {
 	#projectbrief {
 		font-size: 1em;
 	}
-
 }
 
 @media (max-width: 768px) {
@@ -2406,8 +2405,6 @@ body {
 	#projectbrief {
 		font-size: 0.9em;
 	}
-
-
 }
 
 @media (max-width: 576px) {
@@ -2422,7 +2419,6 @@ body {
 	#projectbrief {
 		font-size: 0.8em;
 	}
-
 }
 
 @media (max-width: 480px) {
@@ -2437,5 +2433,47 @@ body {
 	#projectbrief {
 		font-size: 0.75em;
 	}
-
 }
+
+@media (max-width: 400px) {
+	#titlearea {
+		padding: 3px;
+	}
+
+	#projectname {
+		font-size: 0.8em;
+	}
+
+	#projectbrief {
+		font-size: 0.7em;
+	}
+}
+
+@media (max-width: 360px) {
+	#titlearea {
+		padding: 2px;
+	}
+
+	#projectname {
+		font-size: 0.7em;
+	}
+
+	#projectbrief {
+		font-size: 0.65em;
+	}
+}
+
+@media (max-width: 320px) {
+	#titlearea {
+		padding: 1px;
+	}
+
+	#projectname {
+		font-size: 0.6em;
+	}
+
+	#projectbrief {
+		font-size: 0.6em;
+	}
+}
+
