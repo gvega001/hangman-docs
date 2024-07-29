@@ -107,48 +107,40 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    ctx.<a class="code hl_variable" href="struct_hangman_context.html#a214e6d2f0a45dee5fd8820ad0af7e9a9">guessedCount</a> = 0;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// Declare and initialize variables to track game progress</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> winCount = 0;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">int</span> lossCount = 0;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">int</span> totalScore = 0;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">int</span> highScore = 0;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">int</span> loseThreshold = 3;  <span class="comment">// Set the number of losses allowed before the game ends</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">char</span> devName[] = <span class="stringliteral">&quot;Mr. V&quot;</span>;  <span class="comment">// Set the default developer name</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">char</span> phraseFile[100] = <span class="stringliteral">&quot;phrases.txt&quot;</span>;  <span class="comment">// Default phrase file</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> difficulty = 1;  <span class="comment">// Default difficulty level</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// Seed the random number generator with the current time</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    srand((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)time(NULL));</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> winCount = 0, lossCount = 0, totalScore = 0, highScore = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">int</span> loseThreshold = 3;  <span class="comment">// Set the number of losses allowed before the game ends</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">char</span> devName[] = <span class="stringliteral">&quot;Mr. V&quot;</span>;  <span class="comment">// Set the default developer name</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">char</span> phraseFile[100] = <span class="stringliteral">&quot;phrases.txt&quot;</span>;  <span class="comment">// Default phrase file</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">int</span> difficulty = 1;  <span class="comment">// Default difficulty level</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>   </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    srand((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)time(NULL)); <span class="comment">// Seed the random number generator with the current time</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="game__functions_8c.html#a9ba0be36e7a4f4ca1e17a987815f88d8">printWelcome</a>(devName);  <span class="comment">// Print the welcome message</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_function" href="game__functions_8c.html#a65aadaa21f31b6cfb9b37d4b9e036818">getUserSettings</a>(&amp;difficulty, &amp;loseThreshold); <span class="comment">// Get user-configurable settings</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// Display the welcome message</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_function" href="game__functions_8c.html#a9ba0be36e7a4f4ca1e17a987815f88d8">printWelcome</a>(devName);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Get user-configurable settings</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_function" href="game__functions_8c.html#a65aadaa21f31b6cfb9b37d4b9e036818">getUserSettings</a>(&amp;difficulty, &amp;loseThreshold);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// Load high scores from the file and check for errors</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="file__functions_8c.html#a91a0d2f7d14255d26c2bfe3ed057a51f">loadHighScores</a>(&amp;ctx) != 0) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        fprintf(stderr, <span class="stringliteral">&quot;Failed to load high scores.\n&quot;</span>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Load phrases from the specified file and check for errors</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="file__functions_8c.html#a15f4a6dddca9a013922117f68375cd44">loadPhrasesFromFile</a>(&amp;ctx, phraseFile) != 0) {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        fprintf(stderr, <span class="stringliteral">&quot;Failed to load phrases from file.\n&quot;</span>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Initialize the high score value</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="file__functions_8c.html#a01f273cdf761b4fd3983eb64d18cfdf3">initializeHighScore</a>(&amp;ctx, &amp;highScore);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// Start the main game loop</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_function" href="game__functions_8c.html#a3335c528c97047eb05a28e8f62128283">gamePlay</a>(&amp;ctx, &amp;winCount, &amp;lossCount, &amp;totalScore, &amp;highScore, loseThreshold);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// Free dynamically allocated memory for phrases</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_function" href="file__functions_8c.html#adf7d3f1611551ad4a35ad5b28ad73925">freePhrases</a>(&amp;ctx);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Return 0 to indicate successful program completion</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="file__functions_8c.html#a91a0d2f7d14255d26c2bfe3ed057a51f">loadHighScores</a>(&amp;ctx) != 0) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        fprintf(stderr, <span class="stringliteral">&quot;Failed to load high scores.\n&quot;</span>);   <span class="comment">// Load high scores from the file and check for errors</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>   </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="file__functions_8c.html#a15f4a6dddca9a013922117f68375cd44">loadPhrasesFromFile</a>(&amp;ctx, phraseFile) != 0) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        fprintf(stderr, <span class="stringliteral">&quot;Failed to load phrases from file.\n&quot;</span>); <span class="comment">// Load phrases from the specified file and check for errors</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// Initialize the high score value</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="file__functions_8c.html#a01f273cdf761b4fd3983eb64d18cfdf3">initializeHighScore</a>(&amp;ctx, &amp;highScore);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// Start the main game loop</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_function" href="game__functions_8c.html#a3335c528c97047eb05a28e8f62128283">gamePlay</a>(&amp;ctx, &amp;winCount, &amp;lossCount, &amp;totalScore, &amp;highScore, loseThreshold);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// Free dynamically allocated memory for phrases</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_function" href="file__functions_8c.html#adf7d3f1611551ad4a35ad5b28ad73925">freePhrases</a>(&amp;ctx);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Return 0 to indicate successful program completion</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
 </div>
 <div class="ttc" id="afile__functions_8c_html_a01f273cdf761b4fd3983eb64d18cfdf3"><div class="ttname"><a href="file__functions_8c.html#a01f273cdf761b4fd3983eb64d18cfdf3">initializeHighScore</a></div><div class="ttdeci">void initializeHighScore(const HangmanContext *ctx, int *highScore)</div><div class="ttdoc">Initializes the high score value.</div><div class="ttdef"><b>Definition</b> <a href="file__functions_8c_source.html#l00085">file_functions.c:85</a></div></div>
 <div class="ttc" id="afile__functions_8c_html_a15f4a6dddca9a013922117f68375cd44"><div class="ttname"><a href="file__functions_8c.html#a15f4a6dddca9a013922117f68375cd44">loadPhrasesFromFile</a></div><div class="ttdeci">int loadPhrasesFromFile(HangmanContext *ctx, const char *filename)</div><div class="ttdoc">Loads phrases from a file.</div><div class="ttdef"><b>Definition</b> <a href="file__functions_8c_source.html#l00098">file_functions.c:98</a></div></div>
