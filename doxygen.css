@@ -2280,13 +2280,11 @@ body {
 	background-color: #f9f9f9;
 	flex: 1;
 }
-
 .contents {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	display: block;
 	background-color: #ffffff;
 	flex: 1;
+	padding: 20px;
 }
 
 #projectlogo img {
